@@ -14,6 +14,7 @@ public class Application {
 
         System.out.println("Choose a option: ");
         while(option != 5){
+            System.out.println();
             System.out.println("1 - List");
             System.out.println("2 - Insert");
             System.out.println("3 - Update");
@@ -29,6 +30,7 @@ public class Application {
                 }
             } 
             else if (option == 2){
+                System.out.println();
                 System.out.print("Id for insert: ");
                 Integer id = sc.nextInt();
                 System.out.print("Title: ");
@@ -42,6 +44,7 @@ public class Application {
                 mapList.put(id, task);
             }
             else if (option == 3){
+                System.out.println();
                 System.out.print("Id for update: ");
                 Integer id = sc.nextInt();
                 sc.nextLine();
@@ -58,6 +61,7 @@ public class Application {
                 }
             }
             else if (option == 4){
+                System.out.println();
                 System.out.print("Id for remove: ");
                 Integer id = sc.nextInt();
                 mapList.remove(id);
