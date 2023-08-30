@@ -28,8 +28,9 @@ public class Application {
             switch (option) {
                 case "1":
                     System.out.println();
+                    System.out.println("ID |   TÍTULO   | DESCRIÇÃO | STATUS");
                     for (Integer key : mapList.keySet()){
-                        System.out.println(key + " - " + mapList.get(key));
+                        System.out.println(mapList.get(key));
                     }
                     break;
 

@@ -55,10 +55,10 @@ public class Task {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Id: " + getId() + "\n");
-        sb.append("Título: " + getTitle() + "\n");
-        sb.append("Descrição: " + getDescription()  + "\n");
-        sb.append("Status: " + String.valueOf(getStatus()));
+        sb.append(getId() + " - ");
+        sb.append(getTitle() + " - ");
+        sb.append(getDescription() + " - ");
+        sb.append(getStatus());
         return sb.toString();
     }
 
