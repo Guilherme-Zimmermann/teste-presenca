@@ -21,7 +21,7 @@ public class Application {
             System.out.println("Digite (2) Para inserir uma nova tarefa");
             System.out.println("Digite (3) Para alterar uma tarefa");
             System.out.println("Digite (4) Para deletar uma tarefa");
-            System.out.println("Digite (5) Para sair");
+            System.out.println("Digite (5) Para sair da aplicação");
             System.out.print("Você deseja: ");
             String option = sc.nextLine();
 
