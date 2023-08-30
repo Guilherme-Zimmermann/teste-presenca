@@ -39,12 +39,7 @@ public class Application {
                     String title = sc.nextLine();
                     System.out.print("Descrição: ");
                     String description = sc.nextLine();
-                    System.out.println("Digite (1) se a tarefa estiver PENDENTE");
-                    System.out.println("Digite (2) se a tarefa estiver COMPLETO");
-                    System.out.print("Status: ");
-                    Integer status = sc.nextInt();
-                    sc.nextLine();
-                    Task task = new Task(title, description, Status.valueOf(status));
+                    Task task = new Task(title, description, Status.PENDENTE);
                     mapList.put(task.getId(), task);
                     break;
 
