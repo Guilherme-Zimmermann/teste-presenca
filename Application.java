@@ -13,7 +13,7 @@ public class Application {
         boolean loop = true;
 
         System.out.println("Programa de Controle de tarefas");
-        System.out.println("Escolha uma opção: ");
+        System.out.println();
         
         while(loop){
             System.out.println();
@@ -22,7 +22,7 @@ public class Application {
             System.out.println("Digite (3) Para alterar uma tarefa");
             System.out.println("Digite (4) Para deletar uma tarefa");
             System.out.println("Digite (5) Para sair da aplicação");
-            System.out.print("Você deseja: ");
+            System.out.print("Insira uma opção: ");
             String option = sc.nextLine();
 
             switch (option) {
@@ -40,7 +40,6 @@ public class Application {
                     System.out.print("Descrição: ");
                     String description = sc.nextLine();
                     System.out.println("Digite (1) se a tarefa estiver PENDENTE");
-                    System.out.println("Digite (2) se a tarefa estiver COMPLETO");
                     System.out.print("Status: ");
                     Integer status = sc.nextInt();
                     sc.nextLine();
