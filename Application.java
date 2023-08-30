@@ -60,8 +60,11 @@ public class Application {
                         System.out.print("Nova descrição: ");
                         String newDescription = sc.nextLine();
                         mapList.get(id).setDescription(newDescription);
+                        System.out.println("Digite (1) se a tarefa estiver PENDENTE");
+                        System.out.println("Digite (2) se a tarefa estiver COMPLETO");
                         System.out.print("Novo status: ");
-                        String newStatus = sc.nextLine();
+                        Integer newStatus = sc.nextInt();
+                        sc.nextLine();
                         mapList.get(id).setStatus(Status.valueOf(newStatus));
                     }
                     break;
