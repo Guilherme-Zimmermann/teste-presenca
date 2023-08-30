@@ -32,13 +32,15 @@ public class Application {
             } 
             else if (option == 2){
                 System.out.println();
-                System.out.print("Título: ");
+                System.out.print("Título da tarefa: ");
                 sc.nextLine();
                 String title = sc.nextLine();
                 System.out.print("Descrição: ");
                 String description = sc.nextLine();
+                System.out.println("Digite (1) se a tarefa estiver PENDENTE");
+                System.out.println("Digite (2) se a tarefa estiver COMPLETO");
                 System.out.print("Status: ");
-                String status = sc.nextLine();
+                Integer status = sc.nextInt();
                 Task task = new Task(title, description, Status.valueOf(status));
                 mapList.put(task.getId(), task);
             }
