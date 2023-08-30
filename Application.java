@@ -32,8 +32,6 @@ public class Application {
             } 
             else if (option == 2){
                 System.out.println();
-                System.out.print("Insira o id da tarefa que deseja inserir: ");
-                Integer id = sc.nextInt();
                 System.out.print("Título: ");
                 sc.nextLine();
                 String title = sc.nextLine();
@@ -42,7 +40,7 @@ public class Application {
                 System.out.print("Status: ");
                 String status = sc.nextLine();
                 Task task = new Task(title, description, Status.valueOf(status));
-                mapList.put(id, task);
+                mapList.put(task.getId(), task);
             }
             else if (option == 3){
                 System.out.println();

@@ -4,6 +4,8 @@ import model.entities.enums.Status;
 
 public class Task {
 
+    private static int nextId = 1;
+    private Integer id;
     private String title;
     private String description;
     private Status status;
@@ -11,11 +13,20 @@ public class Task {
     public Task(){
     }
 
-    public Task( String title, String description, Status status){
+    public Task(String title, String description, Status status){
+        this.id = nextId++;
         this.title = title;
         this.description = description;
         this.status = status;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }   
 
     public String getTitle() {
         return title;
@@ -44,9 +55,10 @@ public class Task {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Title: " + title + "\n");
-        sb.append("Description: " + description  + "\n");
-        sb.append("Status: " + String.valueOf(status));
+        sb.append("Id: " + getId() + "\n");
+        sb.append("Título: " + getTitle() + "\n");
+        sb.append("Descrição: " + getDescription()  + "\n");
+        sb.append("Status: " + String.valueOf(getStatus()));
         return sb.toString();
     }
 
