@@ -2,8 +2,7 @@ package model.entities.enums;
 
 public enum Status {
     
-    TO_DO,
-    PENDING,
-    FINISHED,
-    CANCELED;
+    PARA_FAZER,
+    PENDENTE,
+    TERMINADA;
 }
