@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -29,6 +30,7 @@ public class Application {
                 case "1":
                     System.out.println();
                     System.out.println("ID |   TÍTULO   | DESCRIÇÃO | STATUS");
+
                     for (Integer key : mapList.keySet()){
                         System.out.println(mapList.get(key));
                     }
@@ -36,42 +38,56 @@ public class Application {
 
                 case "2":
                     System.out.println();
+
                     System.out.print("Título da tarefa: ");
                     String title = sc.nextLine();
+
                     System.out.print("Descrição: ");
                     String description = sc.nextLine();
+                    
                     Task task = new Task(title, description, Status.PENDENTE);
                     mapList.put(task.getId(), task);
                     break;
 
                 case "3":
                     System.out.println();
+
                     System.out.print("Id da tarefa que deseja alterar: ");
                     Integer id = sc.nextInt();
                     sc.nextLine();
+
                     if (mapList.containsKey(id)){
                         System.out.print("Novo título: ");
                         String newTitle = sc.nextLine();
+
                         mapList.get(id).setTitle(newTitle);
                         System.out.print("Nova descrição: ");
+
                         String newDescription = sc.nextLine();
                         mapList.get(id).setDescription(newDescription);
+
                         System.out.println("Digite (1) se a tarefa estiver PENDENTE");
                         System.out.println("Digite (2) se a tarefa estiver COMPLETO");
                         System.out.print("Novo status: ");
                         Integer newStatus = sc.nextInt();
+
                         sc.nextLine();
                         mapList.get(id).setStatus(Status.valueOf(newStatus));
                     }
                     break;
             
                 case "4":
-                    System.out.println();
-                    System.out.print("Id da tarefa que deseja remover: ");
-                    id = sc.nextInt();
-                    sc.nextLine();
-                    mapList.remove(id);
+                    try {
+                        System.out.println();
+                        System.out.print("Id da tarefa que deseja remover: ");
+                        Object idDelete = sc.nextInt();
+                        sc.nextLine();
+                        mapList.remove(idDelete);
+                    } catch (InputMismatchException e) {
+                        System.out.println("Id inválido");
+                    }
                     break;
+                
 
                 case "5":
                     loop = false;
@@ -83,5 +99,15 @@ public class Application {
         }
             
         sc.close();
+    }
+
+    public static boolean isInteger(Object n){
+        try {       
+            Integer.parseInt(n.toString());
+            return true;
+        }
+        catch (InputMismatchException e){
+            return false;
+        }
     }
 }
