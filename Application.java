@@ -12,6 +12,7 @@ public class Application {
         
         Map<Integer, Task> mapList = new HashMap<>();
         boolean loop = true;
+        Integer id = 0;
 
         System.out.println("Programa de Controle de tarefas");
         System.out.println();
@@ -20,16 +21,18 @@ public class Application {
             System.out.println();
             System.out.println("Digite (1) Para listar todas suas tarefas");
             System.out.println("Digite (2) Para inserir uma nova tarefa");
-            System.out.println("Digite (3) Para alterar uma tarefa");
-            System.out.println("Digite (4) Para deletar uma tarefa");
-            System.out.println("Digite (5) Para sair da aplicação");
-            System.out.print("Insira uma opção: ");
+            System.out.println("Digite (3) Para alterar a porcentagem de uma tarefa");
+            System.out.println("Digite (4) Para alterar uma tarefa");
+            System.out.println("Digite (5) Para deletar uma tarefa");
+            System.out.println("Digite (6) Para sair da aplicação");
+            System.out.print("Insira uma das opções acima: ");
             String option = sc.nextLine();
+
+            System.out.println();
 
             switch (option) {
                 case "1":
-                    System.out.println();
-                    System.out.println("ID |   TÍTULO   | DESCRIÇÃO | STATUS");
+                    System.out.println("ID | TÍTULO | DESCRIÇÃO | STATUS | PORCENTAGEM");
 
                     for (Integer key : mapList.keySet()){
                         System.out.println(mapList.get(key));
@@ -37,59 +40,77 @@ public class Application {
                     break;
 
                 case "2":
-                    System.out.println();
-
                     System.out.print("Título da tarefa: ");
                     String title = sc.nextLine();
 
                     System.out.print("Descrição: ");
                     String description = sc.nextLine();
                     
-                    Task task = new Task(title, description, Status.PENDENTE);
+                    Task task = new Task(title, description, Status.EM_ANDAMENTO, Integer.valueOf(0));
                     mapList.put(task.getId(), task);
                     break;
 
                 case "3":
-                    System.out.println();
-
-                    System.out.print("Id da tarefa que deseja alterar: ");
-                    Integer id = sc.nextInt();
-                    sc.nextLine();
-
-                    if (mapList.containsKey(id)){
-                        System.out.print("Novo título: ");
-                        String newTitle = sc.nextLine();
-
-                        mapList.get(id).setTitle(newTitle);
-                        System.out.print("Nova descrição: ");
-
-                        String newDescription = sc.nextLine();
-                        mapList.get(id).setDescription(newDescription);
-
-                        System.out.println("Digite (1) se a tarefa estiver PENDENTE");
-                        System.out.println("Digite (2) se a tarefa estiver COMPLETO");
-                        System.out.print("Novo status: ");
-                        Integer newStatus = sc.nextInt();
-
+                    try {
+                        System.out.print("Id da tarefa para alterar a porcentagem: ");
+                        id = sc.nextInt();
                         sc.nextLine();
-                        mapList.get(id).setStatus(Status.valueOf(newStatus));
+
+                        if (mapList.containsKey(id)){
+                            System.out.print("Porcentagem concluída: ");
+                            int percentage = sc.nextInt();
+                            sc.nextLine();
+                            
+                            mapList.get(id).setPercentage(percentage);
+
+                            if (mapList.get(id).getPercentage() == 100){
+                                mapList.get(id).setStatus(Status.COMPLETO);
+                            }
+                        } else {
+                            System.out.println("A tarefa com o id informado não existe");
+                        }
+                    } catch (InputMismatchException e) {
+                        System.out.println("Id inválido!");
+                    }
+                    
+                    break;
+
+                case "4":
+                    try {
+                        System.out.print("Id da tarefa que deseja alterar: ");
+                        id = sc.nextInt();
+                        sc.nextLine();
+
+                        if (mapList.containsKey(id)){
+                            System.out.print("Novo título: ");
+                            String newTitle = sc.nextLine();
+
+                            System.out.print("Nova descrição: ");
+                            String newDescription = sc.nextLine();
+
+                            mapList.get(id).setTitle(newTitle);
+                            mapList.get(id).setDescription(newDescription);
+                        } else {
+                            System.out.println("A tarefa com o id informado não existe");
+                        }
+                    } catch (InputMismatchException e) {
+                        System.out.println("Id inválido!");
                     }
                     break;
             
-                case "4":
+                case "5":
                     try {
-                        System.out.println();
                         System.out.print("Id da tarefa que deseja remover: ");
                         Object idDelete = sc.nextInt();
                         sc.nextLine();
                         mapList.remove(idDelete);
                     } catch (InputMismatchException e) {
-                        System.out.println("Id inválido");
+                        System.out.println("Id inválido!");
                     }
                     break;
                 
 
-                case "5":
+                case "6":
                     loop = false;
                     break;
 

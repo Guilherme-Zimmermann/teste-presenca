@@ -9,15 +9,17 @@ public class Task {
     private String title;
     private String description;
     private Status status;
+    private Integer percentage;
 
     public Task(){
     }
 
-    public Task(String title, String description, Status status){
+    public Task(String title, String description, Status status, Integer percentage){
         this.id = nextId++;
         this.title = title;
         this.description = description;
         this.status = status;
+        this.percentage = percentage;
     }
 
     public Integer getId() {
@@ -51,6 +53,14 @@ public class Task {
     public void setStatus(Status status) {
         this.status = status;
     }
+
+    public Integer getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(Integer percentage) {
+        this.percentage = percentage;
+    }
     
     @Override
     public String toString() {
@@ -58,7 +68,8 @@ public class Task {
         sb.append(getId() + " - ");
         sb.append(getTitle() + " - ");
         sb.append(getDescription() + " - ");
-        sb.append(getStatus());
+        sb.append(getStatus() + " - ");
+        sb.append(getPercentage() + "%");
         return sb.toString();
     }
 

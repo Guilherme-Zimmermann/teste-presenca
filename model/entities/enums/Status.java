@@ -2,7 +2,7 @@ package model.entities.enums;
 
 public enum Status {
     
-    PENDENTE(1),
+    EM_ANDAMENTO(1),
     COMPLETO(2);
 
     private int code;
