@@ -61,7 +61,11 @@ public class Application {
                             int percentage = sc.nextInt();
                             sc.nextLine();
                             
-                            mapList.get(id).setPercentage(percentage);
+                            if (percentage <= 100){
+                                mapList.get(id).setPercentage(percentage);
+                            } else {
+                                System.out.println("O valor inserido não pode ser maior que 100!");
+                            }
 
                             if (mapList.get(id).getPercentage() == 100){
                                 mapList.get(id).setStatus(Status.COMPLETO);
